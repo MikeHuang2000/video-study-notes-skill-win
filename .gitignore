@@ -1,0 +1,36 @@
+# Local environment helpers
+env.cmd
+oc.cmd
+
+# Local config overrides
+.env
+.env.*
+!.env.example
+*.local
+*.local.*
+
+# Python caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+.venv/
+venv/
+
+# Large local models
+fast-whisper-model/
+
+# Generated outputs
+output/
+
+# Local reference copy of upstream repo
+video-study-notes-skill/
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

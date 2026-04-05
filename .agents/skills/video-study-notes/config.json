@@ -1,0 +1,35 @@
+{
+  "default_model": "fast-whisper-model/faster-whisper-large-v3-turbo",
+  "transcribe_defaults": {
+    "best_of": 5,
+    "patience": 1.0,
+    "length_penalty": 1.0,
+    "temperature": [0.0, 0.2, 0.4, 0.6, 0.8, 1.0],
+    "compression_ratio_threshold": 1.4,
+    "log_prob_threshold": -10.0,
+    "no_speech_threshold": 0.9,
+    "condition_on_previous_text": false,
+    "initial_prompt": "",
+    "prefix": "",
+    "suppress_blank": true,
+    "suppress_tokens": "-1",
+    "without_timestamps": false,
+    "word_timestamps": false,
+    "prepend_punctuations": "\"'“¿([{-",
+    "append_punctuations": "\"'.。,，!！?？:：”)]}、",
+    "repetition_penalty": 1.0,
+    "no_repeat_ngram_size": 0,
+    "prompt_reset_on_temperature": 0.5,
+    "max_new_tokens": null,
+    "chunk_length": 30,
+    "hallucination_silence_threshold": 0.5,
+    "language_detection_threshold": 0.5,
+    "language_detection_segments": 1,
+    "vad_parameters": {
+      "threshold": 0.2,
+      "min_speech_duration_ms": 0,
+      "min_silence_duration_ms": 2000,
+      "speech_pad_ms": 400
+    }
+  }
+}

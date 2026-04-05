@@ -85,7 +85,7 @@ uv pip install --python "<YOUR_CONDA_ENV_PYTHON>" -r requirements-skill.txt
 ffmpeg -version
 ```
 
-如果提示找不到命令，需要把 `ffmpeg` 加到 `PATH`。
+如果提示找不到命令，需要安装 `ffmpeg` 后把 `ffmpeg` 的路径加到 `PATH`。
 
 ## 4. 准备本地 Whisper 模型
 
@@ -162,25 +162,13 @@ uv pip install nvidia-cuda-runtime-cu12 nvidia-cublas-cu12 nvidia-cudnn-cu12
 nvidia-smi
 ```
 
-再验证短音频是否真的走 GPU：
+再验证音频是否真的走 GPU：
 
 ```powershell
-python ".agents\skills\video-study-notes\subskills\media-transcribe\scripts\transcribe_audio.py" --input "output\gpu-smoke-test\video\transcription-test.mp3" --output-dir "output\gpu-smoke-test\transcripts" --language en
+python ".agents\skills\video-study-notes\subskills\media-transcribe\scripts\transcribe_audio.py" --input <input> --output-dir <output>
 ```
 
-然后查看输出 JSON：
-
-```powershell
-python -c "import json, pathlib; p=pathlib.Path(r'output\gpu-smoke-test\transcripts\transcription-test.transcription.json'); print(json.loads(p.read_text(encoding='utf-8'))['device'])"
-```
-
-如果输出是：
-
-```text
-cuda
-```
-
-说明 GPU 转写链路正常。
+如果命令行回显没有出现 `CUDA transcription failed (Library cublas64_12.dll is not found or cannot be loaded). Falling back to CPU int8 local model.` 一类的信息，说明GPU工作正常。
 
 ## 6.1 推荐模型与转写参数优化
 
@@ -427,6 +415,7 @@ Get-ChildItem -Recurse "<your_conda_env>\Lib\site-packages\nvidia" | Where-Objec
 ```
 
 3. 使用仓库中已经修复过的转写脚本。这个脚本会自动：
+
 - 注册 `os.add_dll_directory(...)`
 - 将 NVIDIA `bin` 目录前置加入当前进程 `PATH`
 
